@@ -1,0 +1,9 @@
+.Search {
+  margin: 1%;
+}
+
+.Search__avatar {
+  position: absolute;
+  right: 1%;
+  width: 38px;
+}
