@@ -1,6 +1,8 @@
 import React, {Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import UserProfile from '../components/UserProfile';
+
 import './styles/Login.css'
 
 
@@ -16,6 +18,10 @@ export default class Login extends Component{
         });
     }
 
+    /*handleClick = (e) => {
+        UserProfile.setEmail(this.state.mail);
+    }*/
+
     render(){
         return (
             <div className="form-group text-center Login">
@@ -26,11 +32,9 @@ export default class Login extends Component{
                             placeholder="Email"
                             onChange={this.handleChange}
                     />
-                    <Link to ={{
-                                pathname:'/list',
-                                params:{ email:this.state.mail }
-                            }}
+                    <Link   to ='/list'
                             className="btn btn-primary form-control Login__Button"
+                            onClick={UserProfile.setEmail(this.state.mail)}
                     >Enter</Link>
             </div>
         )
