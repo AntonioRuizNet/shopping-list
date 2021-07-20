@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import Gravatar from "./Gravatar";
-
 import './styles/Search.css';
 
 export default class Search extends Component {
@@ -9,17 +7,10 @@ export default class Search extends Component {
         return (
             <div className="Search">
                 <div className="row">
-                    <div className="col-10">
+                    <div className="col">
                         <input type="text" 
                                 className="form-control" 
-                                placeholder="Escribe un producto"/>
-                    </div>
-                    <div className="col-2">
-                        <Gravatar
-                                className="Search__avatar"
-                                email={this.props.mail}
-                                alt="Avatar"
-                        />
+                                placeholder="Add new"/>
                     </div>
                 </div>
             </div>
