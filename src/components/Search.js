@@ -17,7 +17,7 @@ export default class Search extends Component {
                     <div className="col-2">
                         <Gravatar
                                 className="Search__avatar"
-                                email="email@email.com"
+                                email={this.props.mail}
                                 alt="Avatar"
                         />
                     </div>

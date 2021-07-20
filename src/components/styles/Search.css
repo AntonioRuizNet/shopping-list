@@ -6,4 +6,6 @@
   position: absolute;
   right: 1%;
   width: 38px;
+  border: 2px #569bd5 solid;
+  border-radius: 3px;
 }
