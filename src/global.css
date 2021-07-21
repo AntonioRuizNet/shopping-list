@@ -1,4 +1,14 @@
+:root {
+  --primaryColor: rgb(136, 201, 255);
+  --secondaryColor: rgb(75, 147, 206);
+}
+
 body {
-  background-color: rgb(136, 201, 255);
+  background-color: var(--primaryColor);
   margin: 0px;
+}
+
+a {
+  color: var(--secondaryColor);
+  text-decoration: none;
 }

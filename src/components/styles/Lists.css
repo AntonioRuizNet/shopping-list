@@ -9,4 +9,36 @@
   width: 38px;
   border: 2px #569bd5 solid;
   border-radius: 3px;
+  cursor: pointer;
+}
+
+.Lists__Modal {
+  display: none;
+  width: 200px;
+  background-color: white;
+  position: absolute;
+  right: 6px;
+  top: 45px;
+  border: 1px #569bd5 solid;
+  border-radius: 2px;
+  padding-top: 10px;
+}
+
+.Lists__Modal ul {
+  list-style: none;
+  padding-left: 5px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Lists__Modal ul li {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.Lists__Modal__Close {
+  position: absolute;
+  right: 6px;
+  top: 0px;
+  cursor: pointer;
 }

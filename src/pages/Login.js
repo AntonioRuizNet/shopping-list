@@ -18,10 +18,6 @@ export default class Login extends Component{
         });
     }
 
-    /*handleClick = (e) => {
-        UserProfile.setEmail(this.state.mail);
-    }*/
-
     render(){
         return (
             <div className="form-group text-center Login">
