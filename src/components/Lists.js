@@ -1,9 +1,7 @@
 import React, { Component} from 'react';
 import { Link } from 'react-router-dom';
-import md5 from 'md5';
 
 import Gravatar from "./Gravatar";
-import UserProfile from './UserProfile';
 
 import './styles/Lists.css';
 
@@ -16,28 +14,6 @@ export default class Lists extends Component {
     handleClickHideMenu () {
         document.getElementById('Lists__Modal').style.display = 'none';
     }
-
-    handleSelectList () {
-        const id = document.getElementById('List').value;
-        console.log(id);
-
-        const url = "https://antonioruiz.net/apps/listadecompra/api";
-        const hash = md5(UserProfile.getEmail());
-        const url_final = `${url}/get_public_product_list/${hash}/${id}`;
-        console.log(url_final);
-        const fetchData = async () => {
-          try {
-            const response = await fetch(url_final);
-            const json = await response.json();
-            UserProfile.setList(json)
-          } catch (error) {
-            console.log("error", error);
-          }
-        };
-        fetchData();
-    }
-
-    
 
     render() {
         return (
