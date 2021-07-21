@@ -18,6 +18,10 @@ export default class Login extends Component{
         });
     }
 
+    handleClick = (e) => {
+        localStorage.setItem('MailUser', this.state.mail);
+    }
+
     render(){
         return (
             <div className="form-group text-center Login">
@@ -30,7 +34,7 @@ export default class Login extends Component{
                     />
                     <Link   to ='/list'
                             className="btn btn-primary form-control Login__Button"
-                            onClick={UserProfile.setEmail(this.state.mail)}
+                            onClick={this.handleClick}
                     >Enter</Link>
             </div>
         )

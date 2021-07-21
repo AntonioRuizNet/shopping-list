@@ -4,17 +4,16 @@ import md5 from 'md5';
 import Products from '../components/Products';
 import Search from '../components/Search';
 import Lists from '../components/Lists';
-import UserProfile from '../components/UserProfile';
 
 export default function List() {  
 
   const  [lists, setLists] = useState([]);
   const  [products, setProducts] = useState([]);
-  const mail = UserProfile.getEmail();
+  const mail = localStorage.getItem('MailUser');
 
     useEffect(() => {
         const url = "https://antonioruiz.net/apps/listadecompra/api";
-        const hash = md5(UserProfile.getEmail());
+        const hash = md5(localStorage.getItem('MailUser'));
         const url_final = `${url}/get_public_list/${hash}`;
         const fetchData = async () => {
           try {
@@ -25,27 +24,20 @@ export default function List() {
             console.log("error", error);
           }
         };
-    
         fetchData();
     }, []);
 
     const updateProducts = (e) => {
-      const id = e.target.value;
-
+        const id = e.target.value;
         const url = "https://antonioruiz.net/apps/listadecompra/api";
-        const hash = md5(UserProfile.getEmail());
+        const hash = md5(localStorage.getItem('MailUser'));
         const url_final = `${url}/get_public_product_list/${hash}/${id}`;
-        //console.log(url_final);
-        const fetchData = async () => {
-          try {
-            const response = await fetch(url_final);
-            const json = await response.json();
-            UserProfile.setList(json)
-            //setProducts(json);
-            //console.log(UserProfile.getList()) //Aqui se muestra correctamente
-          } catch (error) {
-            console.log("error", error);
-          }
+
+        let fetchData = async () => {
+          await fetch(url_final)
+                  .then(response => response.json())
+                  .then(json => console.log(json))
+                  .then(json => setProducts(json))
         };
         fetchData();
       
@@ -54,8 +46,13 @@ export default function List() {
 
     return(
         <React.Fragment>
+          {console.log(products)}
           <Lists lists={lists} mail={mail} onChange={updateProducts}/>
-          <Products nombre={UserProfile.getList()} />
+
+          {/*products.map( (e) => {
+              <Product nombre={e.nombre} />
+          })*/}
+
           <Search/>
         </React.Fragment>
     )
