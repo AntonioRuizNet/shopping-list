@@ -36,7 +36,6 @@ export default function List() {
         let fetchData = async () => {
           await fetch(url_final)
                   .then(response => response.json())
-                  .then(json => console.log(json))
                   .then(json => setProducts(json))
         };
         fetchData();
@@ -50,9 +49,9 @@ export default function List() {
           <Lists lists={lists} mail={mail} onChange={updateProducts}/>
 
           {/*products.map( (e) => {
-              <Product nombre={e.nombre} />
+              <Products nombre={e.nombre} />
           })*/}
-
+          <Products data={products} />
           <Search/>
         </React.Fragment>
     )

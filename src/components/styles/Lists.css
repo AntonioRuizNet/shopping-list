@@ -1,5 +1,6 @@
 .Lists {
   margin: 5px;
+  border: 2px #569bd5 solid !important;
 }
 
 .Lists__avatar {
