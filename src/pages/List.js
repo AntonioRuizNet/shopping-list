@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import md5 from 'md5';
 
-import Element from '../components/Element';
+import Products from '../components/Products';
 import Search from '../components/Search';
 import Lists from '../components/Lists';
 import UserProfile from '../components/UserProfile';
 
-export default function List(props) {  
+export default function List() {  
 
-    const [advice, setAdvice] = useState(0);
-    const mail = UserProfile.getEmail();
-    const sample = 0;
+  const  [lists, setLists] = useState([]);
+  const  [products, setProducts] = useState([]);
+  const mail = UserProfile.getEmail();
 
-    const url = "https://antonioruiz.net/apps/listadecompra/api";
-    const hash = md5(mail);
-    const url_final = url+'/get_public_list/'+hash;
-    
     useEffect(() => {
+        const url = "https://antonioruiz.net/apps/listadecompra/api";
+        const hash = md5(UserProfile.getEmail());
+        const url_final = `${url}/get_public_list/${hash}`;
         const fetchData = async () => {
           try {
             const response = await fetch(url_final);
             const json = await response.json();
-            setAdvice(json)
+            setLists(json)
           } catch (error) {
             console.log("error", error);
           }
@@ -30,13 +29,14 @@ export default function List(props) {
         fetchData();
     }, []);
 
+    const updateProducts = () => setProducts(UserProfile.getList());
+
 
     return(
         <React.Fragment>
-            {console.log(mail)}
-            <Lists lists={advice} mail={mail}/>
-            <Element nombre={sample} id={sample} />
-            <Search/>
+          <Lists lists={lists} mail={mail} onChange={updateProducts}/>
+          <Products nombre={products} />
+          <Search/>
         </React.Fragment>
     )
 

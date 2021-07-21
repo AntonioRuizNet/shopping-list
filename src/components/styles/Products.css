@@ -1,11 +1,11 @@
-.Element {
-  margin: 5px;
+.Products {
+  margin: 5px 6px 5px 5px;
   padding: 5px;
   background-color: #fff;
   box-shadow: 1px 1px 4px #777777;
 }
 
-.Element__Check {
+.Products__Check {
   width: 30px;
   height: 30px;
 }

@@ -1,18 +1,18 @@
 var UserProfile = (function() {
-    var email = "";
+    let email = "";
+    let list = [];
   
-    var getEmail = function() {
-      return email;    // Or pull this from cookie/localStorage
-    };
-  
-    var setEmail = function(mail) {
-        email = mail;     
-      // Also set this in cookie/localStorage
-    };
+    let getEmail = function() { return email; };
+    let setEmail = function(m) { email = m; };
+
+    let getList = function() { return list; };
+    let setList = function(l) { list = l; };
   
     return {
         getEmail: getEmail,
-        setEmail: setEmail
+        setEmail: setEmail,
+        getList: getList,
+        setList: setList
     }
   
   })();
