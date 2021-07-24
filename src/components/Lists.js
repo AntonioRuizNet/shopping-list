@@ -41,7 +41,7 @@ export default class Lists extends Component {
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                  id: 5,
+                  id: '',
                   nombre: name
                 })
             });

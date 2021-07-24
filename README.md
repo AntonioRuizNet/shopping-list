@@ -16,5 +16,5 @@ You will also see any lint errors in the console.
 
 ### `json-server --watch db.json --port 3004`
 
-Runs json server
+Runs json server.\
 Open [http://localhost:3004/](http://localhost:3004) to view it in the browser.

@@ -8,6 +8,9 @@ export default function List() {
 
   const  [lists, setLists] = useState([]);
   const  [products, setProducts] = useState([]);
+  const  [product, setProduct] = useState([]);
+  const  [listSel, setlistSel] = useState([]);
+
   const mail = localStorage.getItem('MailUser');
 
     useEffect(() => {
@@ -26,6 +29,7 @@ export default function List() {
 
     const getListProducts = (e) => {
         const id = e.target.value;
+        setlistSel(id);
         const url = "http://localhost:3004/products";
         let fetchData = async () => {
           await fetch(url)
@@ -38,12 +42,38 @@ export default function List() {
       
     };
 
+    const onChange = (e) => {
+      setProduct(e.target.value);
+    }
+
+    const onSubmit = (e) => {
+      e.preventDefault();
+
+      const url = "http://localhost:3004/products";
+        (async () => {
+            const rawResponse = await fetch(url, {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                  id: '', 
+                  id_list: listSel,
+                  nombre: product,
+                  estado: '1'
+                })
+            });
+            console.log(rawResponse);
+          })();
+    }
+
     if(products.length>0)
       return(
           <React.Fragment>
             <Lists lists={lists} mail={mail} onChange={getListProducts}/>
             <Products data={products} />
-            <NewProd />
+            <NewProd onSubmit={onSubmit} onChange={onChange}/>
           </React.Fragment>
       )
     else
