@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "nombre": "First list",
+    "codigo": "202004160222423"
+  },
+  {
+    "id": "2",
+    "nombre": "Small list",
+    "codigo": "202005020650283"
+  },
+  {
+    "id": "3",
+    "nombre": "Weekly list",
+    "codigo": "202005160140003"
+  }
+]

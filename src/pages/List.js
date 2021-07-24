@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import md5 from 'md5';
 
 import Products from '../components/Products';
-import Search from '../components/Search';
+import NewProd from '../components/NewProd';
 import Lists from '../components/Lists';
 
 export default function List() {  
@@ -12,12 +11,10 @@ export default function List() {
   const mail = localStorage.getItem('MailUser');
 
     useEffect(() => {
-        const url = "https://antonioruiz.net/apps/listadecompra/api";
-        const hash = md5(localStorage.getItem('MailUser'));
-        const url_final = `${url}/get_public_list/${hash}`;
+        const url = "http://localhost:3000/lists.json";
         const fetchData = async () => {
           try {
-            const response = await fetch(url_final);
+            const response = await fetch(url);
             const json = await response.json();
             setLists(json)
           } catch (error) {
@@ -27,34 +24,33 @@ export default function List() {
         fetchData();
     }, []);
 
-    const updateProducts = (e) => {
+    const getListProducts = (e) => {
         const id = e.target.value;
-        const url = "https://antonioruiz.net/apps/listadecompra/api";
-        const hash = md5(localStorage.getItem('MailUser'));
-        const url_final = `${url}/get_public_product_list/${hash}/${id}`;
-
+        const url = "http://localhost:3000/products.json";
         let fetchData = async () => {
-          await fetch(url_final)
+          await fetch(url)
                   .then(response => response.json())
-                  .then(json => setProducts(json))
+                  .then(json => setProducts(json.filter( (e) => {
+                    return e.id_list === id
+                  })))
         };
         fetchData();
       
     };
 
-
-    return(
-        <React.Fragment>
-          {console.log(products)}
-          <Lists lists={lists} mail={mail} onChange={updateProducts}/>
-
-          {/*products.map( (e) => {
-              <Products nombre={e.nombre} />
-          })*/}
-          <Products data={products} />
-          <Search/>
-        </React.Fragment>
-    )
-
+    if(products.length>0)
+      return(
+          <React.Fragment>
+            <Lists lists={lists} mail={mail} onChange={getListProducts}/>
+            <Products data={products} />
+            <NewProd />
+          </React.Fragment>
+      )
+    else
+      return(
+          <React.Fragment>
+            <Lists lists={lists} mail={mail} onChange={getListProducts}/>
+          </React.Fragment>
+      )
 
 }

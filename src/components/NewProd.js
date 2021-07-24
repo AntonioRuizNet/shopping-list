@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-import './styles/Search.css';
+import './styles/NewProd.css';
 
-export default class Search extends Component {
+export default class NewProd extends Component {
     render() {
         return (
-            <div className="Search">
+            <div className="NewProd">
                 <div className="row">
                     <div className="col">
                         <input type="text" 
