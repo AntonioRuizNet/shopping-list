@@ -7,18 +7,23 @@ export default class Products extends Component{
         return (
             <React.Fragment>
             {this.props.data.map( (e) => {
-            return (
-                <div key={e.id} className="Products"> 
-                    <div className="row">
-                        <div className="col-2">
-                            <input type="checkbox" className="Products__Check" />
-                        </div>
-                        <div className="col-10">
-                            {e.nombre}
+                let checked = false; if(e.estado==0) checked = true;
+                return (
+                    <div key={e.id} className="Products"> 
+                        <div className="row">
+                            <div className="col-2">
+                                <input  name={e.id} 
+                                        type="checkbox" 
+                                        className="Products__Check" 
+                                        onClick={this.props.onClick}
+                                        defaultChecked={e.estado}/>
+                            </div>
+                            <div className="col-10">
+                                {e.nombre}
+                            </div>
                         </div>
                     </div>
-                </div>
-            );
+                );
             })}
             </React.Fragment>
         )

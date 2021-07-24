@@ -68,11 +68,33 @@ export default function List() {
           })();
     }
 
+    const changeState = (e) => {
+      let prod = products.filter( (p) => { return p.id == e.target.name})
+      let estado = ""; if(e.target.checked) estado = "checked";
+      
+      const url = `http://localhost:3004/products/${e.target.name}`;
+        (async () => {
+            const rawResponse = await fetch(url, {
+              method: 'PUT',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ 
+                  estado: estado,
+                  id_list: listSel,
+                  nombre: prod[0].nombre
+                })
+            });
+            console.log(rawResponse);
+          })();
+    }
+
     if(products.length>0)
       return(
           <React.Fragment>
             <Lists lists={lists} mail={mail} onChange={getListProducts}/>
-            <Products data={products} />
+            <Products data={products} onClick={changeState}/>
             <NewProd onSubmit={onSubmit} onChange={onChange}/>
           </React.Fragment>
       )

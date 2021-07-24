@@ -22,37 +22,37 @@
       "id": 1,
       "id_list": "1",
       "nombre": "1 tomato pot",
-      "estado": "1"
+      "estado": ""
     },
     {
-      "id": 2,
+      "estado": "checked",
       "id_list": "1",
       "nombre": "10 brick milk",
-      "estado": "1"
+      "id": 2
     },
     {
       "id": 3,
       "id_list": "2",
       "nombre": "Tuna",
-      "estado": "1"
+      "estado": ""
     },
     {
       "id": 4,
       "id_list": "2",
       "nombre": "Sugar",
-      "estado": "1"
+      "estado": ""
     },
     {
-      "id": 5,
+      "estado": "",
       "id_list": "1",
-      "nombre": "Potatoes",
-      "estado": "1"
+      "nombre": "Potatoes XL",
+      "id": 5
     },
     {
       "id": 6,
       "id_list": "1",
       "nombre": "Potatoes",
-      "estado": "1"
+      "estado": ""
     }
   ]
 }
