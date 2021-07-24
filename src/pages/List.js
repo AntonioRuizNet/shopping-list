@@ -11,7 +11,7 @@ export default function List() {
   const mail = localStorage.getItem('MailUser');
 
     useEffect(() => {
-        const url = "http://localhost:3000/lists.json";
+        const url = "http://localhost:3004/lists";
         const fetchData = async () => {
           try {
             const response = await fetch(url);
@@ -26,7 +26,7 @@ export default function List() {
 
     const getListProducts = (e) => {
         const id = e.target.value;
-        const url = "http://localhost:3000/products.json";
+        const url = "http://localhost:3004/products";
         let fetchData = async () => {
           await fetch(url)
                   .then(response => response.json())

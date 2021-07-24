@@ -1,0 +1,45 @@
+{
+  "lists": [
+    {
+      "id": "1",
+      "nombre": "First list",
+      "codigo": "202004160222423"
+    },
+    {
+      "id": "2",
+      "nombre": "Small list",
+      "codigo": "202005020650283"
+    },
+    {
+      "id": "3",
+      "nombre": "Weekly list",
+      "codigo": "202005160140003"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "id_list": "1",
+      "nombre": "1 tomato pot",
+      "estado": "1"
+    },
+    {
+      "id": "2",
+      "id_list": "1",
+      "nombre": "10 brick milk",
+      "estado": "1"
+    },
+    {
+      "id": "3",
+      "id_list": "2",
+      "nombre": "Tuna",
+      "estado": "1"
+    },
+    {
+      "id": "4",
+      "id_list": "2",
+      "nombre": "Sugar",
+      "estado": "1"
+    }
+  ]
+}

@@ -6,6 +6,15 @@ import Gravatar from "./Gravatar";
 import './styles/Lists.css';
 
 export default class Lists extends Component {
+    state = {
+        form: {
+            namelist: ''
+        }
+    }
+
+    handleChange = (e) => {
+        
+    };
 
     handleClickShowMenu () {
         document.getElementById('Lists__Modal').style.display = 'block';
@@ -20,25 +29,26 @@ export default class Lists extends Component {
         document.getElementById('Lists__NewList').style.display = 'block';
     }
 
-    handleClickCreateNewList(){
+    handleClickCreateNewList = (e) => {
+        
+        this.setState({
+            form: {
+                ...this.state.form,
+                [e.target.name]: e.target.value
+            },
+        });
+
         document.getElementById('Lists__NewList').style.display = 'none';
-        let namelist = document.getElementById('namelist').value;
-        //console.log(namelist);
-
-        const url = "http://localhost:3000/lists.json";
-        const mail = localStorage.getItem('MailUser');
-
-        const url_final = `${url}/set_new_list`;
-        //To testing: const url_final = 'https://httpbin.org/post';
+        const url = "http://localhost:3004/lists.json";
         (async () => {
-            const rawResponse = await fetch(url_final, {
+            const rawResponse = await fetch(url, {
               method: 'POST',
               headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                  namelist: namelist
+                  nombre: this.state.form.namelist
                 })
             });
             console.log(rawResponse);
