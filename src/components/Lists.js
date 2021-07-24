@@ -6,11 +6,6 @@ import Gravatar from "./Gravatar";
 import './styles/Lists.css';
 
 export default class Lists extends Component {
-    state = {
-        form: {
-            namelist: ''
-        }
-    }
 
     handleChange = (e) => {
         
@@ -29,17 +24,15 @@ export default class Lists extends Component {
         document.getElementById('Lists__NewList').style.display = 'block';
     }
 
-    handleClickCreateNewList = (e) => {
-        
-        this.setState({
-            form: {
-                ...this.state.form,
-                [e.target.name]: e.target.value
-            },
-        });
-
+    handleClickCloseModalList () {
         document.getElementById('Lists__NewList').style.display = 'none';
-        const url = "http://localhost:3004/lists.json";
+    }
+
+    handleClickCreateNewList = (e) => {
+        let name = document.getElementById('namelist').value;
+        document.getElementById('namelist').value = "";
+        document.getElementById('Lists__NewList').style.display = 'none';
+        const url = "http://localhost:3004/lists";
         (async () => {
             const rawResponse = await fetch(url, {
               method: 'POST',
@@ -48,7 +41,8 @@ export default class Lists extends Component {
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                  nombre: this.state.form.namelist
+                  id: 5,
+                  nombre: name
                 })
             });
             console.log(rawResponse);
@@ -89,7 +83,7 @@ export default class Lists extends Component {
 
             <div id="Lists__NewList" className="Lists__NewList">
                 <span className="Lists__Modal__Close">
-                    <i className="fa fa-close" onClick={this.handleClickHideMenu}></i>
+                    <i className="fa fa-close" onClick={this.handleClickCloseModalList}></i>
                 </span>
                 <div className="row">
                     <div className="col-12">
