@@ -4,28 +4,17 @@ import Products from '../components/Products';
 import NewProd from '../components/NewProd';
 import Lists from '../components/Lists';
 
+import useLists from '../hooks/useLists';
+
 export default function List() {  
 
-  const  [lists, setLists] = useState([]);
+  //const  [lists, setLists] = useState([]);
   const  [products, setProducts] = useState([]);
   const  [product, setProduct] = useState([]);
   const  [listSel, setlistSel] = useState([]);
+  const lists = useLists();
 
   const mail = localStorage.getItem('MailUser');
-
-    useEffect(() => {
-        const url = "http://localhost:3004/lists";
-        const fetchData = async () => {
-          try {
-            const response = await fetch(url);
-            const json = await response.json();
-            setLists(json)
-          } catch (error) {
-            console.log("error", error);
-          }
-        };
-        fetchData();
-    }, []);
 
     const getListProducts = (e) => {
         const id = e.target.value;
